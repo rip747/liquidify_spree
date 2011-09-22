@@ -1,0 +1,3 @@
+class Snippet < Template
+  
+end

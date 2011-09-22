@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  theme_id: 
+  name: 
+  description: 
+  path: 
+  raw_item_template: 
+
+two:
+  theme_id: 
+  name: 
+  description: 
+  path: 
+  raw_item_template: 
