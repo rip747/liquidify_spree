@@ -1,0 +1,12 @@
+= render "shared/error_messages", :target => @liquid_theme
+%fieldset#general_fields
+	%legend= t(:general)
+	= f.field_container :name do
+		= f.label :name
+		%br
+		= f.text_field :name
+	
+	= f.field_container :description do
+		= f.label :description
+		%br
+		= f.text_area :description, :style => "height:50px"

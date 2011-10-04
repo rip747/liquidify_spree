@@ -1,0 +1,4 @@
+%h1= t("liquid_template.edit")
+= form_for(@liquid_template, :url => object_url, :html => { :method => :put }) do |f|
+	= render :partial => "form", :locals => { :f => f }
+	= render :partial => "edit_resource_links"

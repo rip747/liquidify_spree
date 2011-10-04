@@ -1,0 +1,25 @@
+.toolbar
+	%ul.actions
+		%li= button_link_to t("liquid_theme.new"), new_object_url, :icon => 'add'
+	%br.clear
+%h1= t "liquid_themes"
+%table.index
+	%thead
+		%tr
+			%th= t("name")
+			%th= t("description")
+			%th{width:250}= t("action")
+	%tbody
+	- if LiquidTheme.count > 0
+		- LiquidTheme.all.each do |theme|
+			%tr{:id => dom_id(theme)}
+				%td= theme.name
+				%td= theme.description
+				%td
+					= link_to_edit theme
+					&nbsp;
+					= link_to_delete theme
+	- else
+		%tr
+			%td{colspan:3}
+				= raw t("liquid_theme.empty", :button=>link_to(t('liquid_theme.new'), new_object_url))

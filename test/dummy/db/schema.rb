@@ -13,10 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20110919171950) do
 
-  create_table "templates", :force => true do |t|
-    t.integer  "theme_id"
+  create_table "liquid_templates", :force => true do |t|
+    t.integer  "liquid_theme_id"
     t.string   "type"
     t.string   "name"
+    t.string   "classname"
     t.text     "description"
     t.text     "raw_item_template"
     t.text     "serialized_item_template"
@@ -24,9 +25,21 @@ ActiveRecord::Schema.define(:version => 20110919171950) do
     t.datetime "updated_at"
   end
 
-  create_table "themes", :force => true do |t|
+  create_table "liquid_themes", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "theme_assets", :force => true do |t|
+    t.string   "local_path"
+    t.string   "content_type"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "size"
+    t.string   "folder"
+    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

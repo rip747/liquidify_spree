@@ -1,0 +1,4 @@
+%h1= t("liquid_theme.new")
+= form_for(:liquid_theme, :url => collection_url) do |f|
+	= render :partial => "form", :locals => { :f => f }
+	= render :partial => "admin/shared/new_resource_links"

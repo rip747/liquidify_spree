@@ -1,0 +1,24 @@
+#= require ./codemirror/codemirror
+
+@CodeMirrorEditors = []
+
+addCodeMirrorEditor = (type, el, parser) ->
+	parser = "#{parser || 'Liquid'}Parser"
+	editor = CodeMirror.fromTextArea(el, {
+		basefiles:["<%= asset_path ('admin/codemirror/codemirror_base.min.js')%>"], 
+		stylesheet:[
+			"<%= asset_path ('admin/liquid_editor/codemirror/csscolors.css')%>",
+			"<%= asset_path ('admin/liquid_editor/codemirror/javascriptcolors.css')%>",
+			"<%= asset_path ('admin/liquid_editor/codemirror/liquidcolors.css')%>",
+			"<%= asset_path ('admin/liquid_editor/codemirror/xmlcolors.css')%>"
+			],
+		continuousScanning: 500,
+		reindentOnLoad: true,
+		initCallback: (editor) ->
+			console.debug(editor)
+		})
+	CodeMirrorEditors.push({ 'el': el, 'editor': editor });
+
+jQuery ($) ->
+	$('.liquid_area.html').each ->
+		addCodeMirrorEditor "unknown", this, "liquid"

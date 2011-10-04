@@ -1,0 +1,3 @@
+class LiquidSnippet < LiquidTemplate
+  
+end

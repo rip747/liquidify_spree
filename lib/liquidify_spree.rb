@@ -1,5 +1,7 @@
 require 'liquid'
 require 'spree_core'
+require "liquidify_extender"
+require "liquidify_templates_collection"
 require "liquidify_spree/engine"
 
 module LiquidifySpree
@@ -13,6 +15,6 @@ module LiquidifySpree
   mattr_accessor :drop_module
 
   if defined?(Rails)
-    self.template_paths << "#{Rails.root}/db/liquid_templates"
+    #self.template_paths << "#{Rails.root}/db/liquid_templates"
   end
 end
