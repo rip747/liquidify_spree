@@ -14,26 +14,12 @@ module LiquidifyExtender
       self.class.liquidify_template(args)
     end
     
+    
     def render_liquid(controller, args={})
       @output = ""
-      @action = args[:action] || controller.params[:action]
-      @template_name = LiquidifyTemplatesCollection.instance.retrive_template_name(controller, @action)
-      unless @template_name.empty?
-        @theme = retrive_liquid_theme(args.delete(:theme))
-        prepare_and_set_response(@output) and return if @theme.nil?
-        @template = @theme.liquid_templates.where(:name => @template_name).first
-        @template = @template.try(:item_template)
-        unless (@template.nil?)
-          begin
-            args = {}.
-            merge(args).
-            merge(default_params_to_liquid)
-            @output = @template.render(args.stringify_keys)
-          rescue Exception => e
-            @output = e.message
-          end
-        end
-      end
+      @liquid_tmp_content = render_liquid_template(controller, args)
+      @liquid_tmp_header = render_header_template(controller, args)
+      @output = render_theme({:content_for_layout => @liquid_tmp_content, :content_for_header => @liquid_tmp_header}.stringify_keys)
       prepare_and_set_response(@output)
     end
     
@@ -44,6 +30,46 @@ module LiquidifyExtender
     end
     
     protected
+    
+    def render_template_with_args(template, args = {})
+      ret = ""
+      unless (template.nil?)
+        begin
+          args = {}.
+          merge(args).
+          merge(default_params_to_liquid)
+          ret = template.render(args.stringify_keys)
+        rescue Exception => e
+          ret = e.message
+        end
+      end
+      ret
+    end
+    
+    def render_theme(args)
+      @theme = retrive_liquid_theme(args[:theme])
+      @template = @theme.liquid_templates.where(:name => "Theme.liquid").first
+      @template = @template.try(:item_template)
+      render_template_with_args(@template, args)
+    end
+    
+    def render_header_template(controller, args)
+      ""
+    end
+    
+    def render_liquid_template(controller, args={})
+      ret = ""
+      @action = args[:action] || controller.params[:action]
+      @template_name = LiquidifyTemplatesCollection.instance.retrive_template_name(controller, @action)
+      unless @template_name.empty?
+        @theme = retrive_liquid_theme(args[:theme])
+        prepare_and_set_response(@output) and return if @theme.nil?
+        @template = @theme.liquid_templates.where(:name => @template_name).first
+        @template = @template.try(:item_template)
+        ret = render_template_with_args(@template, args)
+      end
+      ret
+    end
     
     def retrive_liquid_theme(theme_name)
       LiquidTheme.find_by_name(theme_name || LiquidifySpree::Config[:theme])

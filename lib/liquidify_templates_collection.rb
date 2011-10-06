@@ -5,6 +5,7 @@ class LiquidifyTemplatesCollection
   
   def initialize
     @templates_hash ||= {}
+    register(nil, {:theme => "Theme.liquid", :not_found => "404.liquid"})
   end
   
   
@@ -12,7 +13,7 @@ class LiquidifyTemplatesCollection
   # example:
   # register HomeController => {:index => "index.liquid", :show => "index.liquid", :complete => "complete.liquid"}
   def register(klass = nil, args = Hash.new)
-    return if klass.nil? or args.blank?
+    return if args.blank?
     @templates_hash[klass] ||= {}
     @templates_hash[klass].merge!(args)
   end
@@ -27,5 +28,9 @@ class LiquidifyTemplatesCollection
     rescue Exception => e
       return ""
     end
+  end
+  
+  def retrive_theme_template
+    
   end
 end

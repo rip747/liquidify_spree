@@ -19,7 +19,8 @@ class LiquidThemeCollector
   def create_missing_templates
     @templates_hash.each do |clazz, options|
       options.each do |key, value|
-        @liquid_theme.liquid_templates.create(:classname => clazz.name, :name=>value) if @liquid_theme.liquid_templates.where(:classname => clazz.name, :name=>value).empty?
+        klazz_name = clazz.nil? ? "Nill" : clazz.name
+        @liquid_theme.liquid_templates.create(:classname => klazz_name, :name=>value) if @liquid_theme.liquid_templates.where(:classname => klazz_name, :name=>value).empty?
       end
     end
   end

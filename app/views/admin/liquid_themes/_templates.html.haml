@@ -7,5 +7,5 @@
 	%tbody
 		- LiquidThemeCollector.new(@liquid_theme).templates.each do |template|
 			%tr{:id => dom_id(template)}
-				%td= link_to_with_icon 'edit', template.name, edit_admin_liquid_theme_liquid_template_path(template)
+				%td= link_to_with_icon 'edit', template.name, edit_admin_liquid_theme_liquid_template_path(@liquid_theme, template)
 				%td= template.description
