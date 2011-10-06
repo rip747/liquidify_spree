@@ -1,0 +1,14 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t(:general_settings) %></h1>
+
+<table data-hook="preferences">
+  <% @preferences.each do |key| %>
+    <tr>
+      <th scope="row"><%= t(key) %>:</th>
+      <td><%= LiquidifySpree::Config[key] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to_with_icon 'edit', t(:edit), edit_admin_liquid_settings_path, :id => 'admin_liquid_settings_link' %></p>

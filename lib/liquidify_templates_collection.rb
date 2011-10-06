@@ -16,4 +16,16 @@ class LiquidifyTemplatesCollection
     @templates_hash[klass] ||= {}
     @templates_hash[klass].merge!(args)
   end
+  
+  def templates_hash
+    @templates_hash
+  end
+  
+  def retrive_template_name(controller, action)
+    begin
+      return @templates_hash[controller.class][action.to_sym]
+    rescue Exception => e
+      return ""
+    end
+  end
 end

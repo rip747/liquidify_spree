@@ -1,4 +1,6 @@
 ru:
+  liquid_settings: "Настройки Liquid"
+  liquid_settings_description: "Настройки шаблонизатора Liquid"
   liquid_themes: "Темы"
   liquid_theme:
     new: "Новая тема"

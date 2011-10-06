@@ -11,6 +11,9 @@ module LiquidifySpree
       Dir.glob(File.join(File.dirname(__FILE__), "../../app/overrides/*.rb")) do |c|
         Rails.application.config.cache_classes ? require(c) : load(c)
       end
+      
+      Dir[File.dirname(__FILE__) + '/../liquid/**/*.rb'].each { |f| Rails.env.production? ? require(f) : load(f) }
+      
       if Spree::Config.instance
         Spree::Config.set(:default_locale => :ru)
       end

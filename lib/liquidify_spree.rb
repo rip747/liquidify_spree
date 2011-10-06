@@ -2,6 +2,7 @@ require 'liquid'
 require 'spree_core'
 require "liquidify_extender"
 require "liquidify_templates_collection"
+require "liquidify_spree/config"
 require "liquidify_spree/engine"
 
 module LiquidifySpree

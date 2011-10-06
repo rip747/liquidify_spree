@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       resources :assets
       resources :snippets
       resources :liquid_templates
+      
     end
+    resource :liquid_settings
   end
 end
