@@ -35,6 +35,9 @@ module LiquidifySpree
         ret[:config][key] = Spree::Config[key.to_sym]
       end
       
+      #retrive cart
+      ret[:cart] ||= @controller.current_order(true)
+      
       ret.stringify_keys
     end
   end
