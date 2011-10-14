@@ -12,6 +12,7 @@ gemspec
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+#gem "rails_best_practices"
 group :test do
   gem 'cucumber-rails'
   # database_cleaner is not required, but highly recommended
