@@ -1,4 +1,5 @@
 ru:
+  file_type: "Тип файла"
   liquid_settings: "Настройки Liquid"
   liquid_settings_description: "Настройки шаблонизатора Liquid"
   liquid_themes: "Темы"
@@ -17,4 +18,8 @@ ru:
     empty: "Пока не создано ни одного сниппета. Вы можете создать новый сниппет, просто нажав %{button}"
     edit: "Редактировать сниппет"
     showme: "Вы можете вставлять данный сниппет в код шаблонов следующим образом: <code>{% include '%{name}' %}</code>"
-  liquid_assets: "Файлы темы"
+  theme_assets: "Файлы темы"
+  theme_asset:
+    new: "Создать файл"
+    empty: "А тут пусто"
+    edit: "Редактировать файл"

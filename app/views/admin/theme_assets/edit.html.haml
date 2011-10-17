@@ -1,0 +1,4 @@
+%h1= t("theme_asset.edit")
+= form_for(@theme_asset, :url => object_url, :html => { :method => :put }) do |f|
+	= render :partial => "form", :locals => { :f => f }
+	= render :partial => "/admin/liquid_templates/edit_resource_links"

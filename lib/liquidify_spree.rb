@@ -1,4 +1,6 @@
 require 'liquid'
+require 'carrierwave'
+#require 'carrierwave/orm/activerecord'
 require 'spree_core'
 require "liquidify_extender"
 require "liquidify_templates_collection"
@@ -6,6 +8,7 @@ require "liquidify_spree/config"
 require "render/content_renderer"
 require "render/layout_renderer"
 require "render/liquid_theme_renderer.rb"
+require "carierwave_ext"
 
 require "liquidify_spree/engine"
 

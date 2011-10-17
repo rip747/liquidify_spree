@@ -2,5 +2,5 @@
 = form_for(@liquid_theme, :url => object_url, :html => { :method => :put }) do |f|
 	= render :partial => "form", :locals => { :f => f }
 	= render :partial => "admin/shared/edit_resource_links"
-- %w{templates snippets assets}.each do |act|
-	= render :partial => "/admin/liquid_#{act}/index"
+- %w{liquid_templates liquid_snippets theme_assets}.each do |act|
+	= render :partial => "/admin/#{act}/index"

@@ -1,0 +1,13 @@
+= render "shared/error_messages", :target => @theme_asset
+%fieldset#general_fields
+	%legend= t(:general)
+	- if @theme_asset.new_record?
+		= f.field_container :source do
+			= f.label :source
+			%br
+			= f.file_field :source
+			
+	= f.field_container :content do
+		= f.label :plain_text
+		%br
+		= f.text_area :plain_text

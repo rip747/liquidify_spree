@@ -10,20 +10,14 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-    when /the new template page/
-      new_template_path
-
+    when /the admin home page/
+      admin_path
+    when /the sign in page/
+      new_user_session_path
+    when /the sign up page/
+      new_user_registration_path
     when /the new theme page/
-      new_theme_path
-
-    when /the new theme page/
-      new_theme_path
-
-    when /the new theme page/
-      new_theme_path
-
-    when /the new theme page/
-      new_theme_path
+      new_admin_liquid_theme
 
 
     # Add more mappings here.

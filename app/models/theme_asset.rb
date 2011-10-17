@@ -1,4 +1,5 @@
 class ThemeAsset < ActiveRecord::Base
+  include Extensions::AssetType
   belongs_to :liquid_theme
   
   attr_accessor :plain_text_name, :plain_text, :plain_text_type, :performing_plain_text
@@ -9,6 +10,10 @@ class ThemeAsset < ActiveRecord::Base
   before_validation :store_plain_text
   before_validation :sanitize_folder
   before_validation :build_local_path
+    
+  def stylesheet_or_javascript?
+    self.stylesheet? || self.javascript?
+  end
   
   def local_path(short = false)
     if short
@@ -43,7 +48,7 @@ class ThemeAsset < ActiveRecord::Base
   end
 
   def performing_plain_text?
-    Boolean.set(self.performing_plain_text) || false
+    self.performing_plain_text || false
   end
   
   def store_plain_text
@@ -56,7 +61,7 @@ class ThemeAsset < ActiveRecord::Base
     sanitized_source = self.escape_shortcut_urls(data)
 
     self.source = CarrierWave::SanitizedFile.new({
-      :tempfile => StringIO.new(sanitized_source),
+      :tempfile => ::StringIO.new(sanitized_source),
       :filename => "#{self.plain_text_name}.#{self.stylesheet? ? 'css' : 'js'}"
     })
   end
@@ -96,7 +101,7 @@ class ThemeAsset < ActiveRecord::Base
 
       sanitized_path = path.gsub(/[("')]/, '').gsub(/^\//, '')
 
-      if asset = self.liquid_theme.liquid_assets.where(:local_path => sanitized_path).first
+      if asset = self.liquid_theme.theme_assets.where(:local_path => sanitized_path).first
         "#{path.first}#{asset.source.url}#{path.last}"
       else
         path

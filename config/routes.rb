@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :liquid_themes do
-      resources :liquid_assets
+      resources :theme_assets
       resources :liquid_snippets
       resources :liquid_templates
       
