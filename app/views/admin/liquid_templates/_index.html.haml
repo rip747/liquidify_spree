@@ -1,0 +1,12 @@
+%h2= t "liquid_templates"
+%table.index
+	%thead
+		%tr
+			%th{width:250}= t("name")
+			%th= t("description")
+	%tbody
+		- LiquidThemeCollector.new(@liquid_theme).templates.each do |template|
+			- if !template.type || template.type == "LiquidTemplate"
+				%tr{:id => dom_id(template)}
+					%td= link_to_with_icon 'edit', template.name, edit_admin_liquid_theme_liquid_template_path(@liquid_theme, template)
+					%td= template.description

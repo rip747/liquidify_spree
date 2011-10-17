@@ -1,0 +1,4 @@
+%h1= t("liquid_snippet.new")
+= form_for(:liquid_snippet, :url => admin_liquid_theme_liquid_snippets_path(params[:liquid_theme_id])) do |f|
+	= render :partial => "form", :locals => { :f => f }
+	= render :partial => "/admin/liquid_templates/t_new_resource_links"

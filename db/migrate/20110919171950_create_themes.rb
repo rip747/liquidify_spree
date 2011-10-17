@@ -20,6 +20,7 @@ class CreateThemes < ActiveRecord::Migration
     end
     
     create_table :theme_assets do |t|
+      t.integer     :liquid_theme_id
       t.string      :local_path
       t.string      :content_type
       t.integer     :width

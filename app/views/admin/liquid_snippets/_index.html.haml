@@ -1,0 +1,19 @@
+%h2= t "liquid_snippets"
+= link_to_with_icon('edit', t('liquid_snippet.new'), new_admin_liquid_theme_liquid_snippet_path(@liquid_theme))
+%table.index
+	%thead
+		%tr
+			%th{width:250}= t("name")
+			%th= t("description")
+			%th{width:250}= t("action")
+	%tbody
+		- if @liquid_theme.liquid_snippets.blank?
+			%tr
+				%td{colspan:3}
+					= raw t("liquid_snippet.empty", :button=>link_to(t('liquid_snippet.new'), new_admin_liquid_theme_liquid_snippet_path(@liquid_theme)))
+		- else
+			- @liquid_theme.liquid_snippets.each do |snippet|
+				%tr{:id => dom_id(snippet)}
+					%td= link_to_with_icon 'edit', snippet.name, edit_admin_liquid_theme_liquid_snippet_path(@liquid_theme, snippet)
+					%td= snippet.description
+					%td= link_to_delete snippet, :url=>admin_liquid_theme_liquid_snippet_path(@liquid_theme, snippet)

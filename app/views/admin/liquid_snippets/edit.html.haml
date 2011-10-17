@@ -1,0 +1,5 @@
+%h1= t("liquid_snippet.edit")
+= form_for(@liquid_snippet, :url => object_url, :html => { :method => :put }) do |f|
+	%p= raw t("liquid_snippet.showme", :name => @liquid_snippet.name)
+	= render :partial => "form", :locals => { :f => f }
+	= render :partial => "/admin/liquid_templates/edit_resource_links"
