@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_core', '>= 0.70.0.rc2'
   s.add_dependency "liquid"
   s.add_dependency "haml"
+  s.add_dependency 'rmagick', '2.12.2'
   s.add_dependency "carrierwave"
   s.add_dependency "formtastic"
 

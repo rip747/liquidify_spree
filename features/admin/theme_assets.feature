@@ -7,6 +7,15 @@ Background:
 	Given I have the theme: "Default" set up
 
 Scenario: Save stylesheet file
-	Given a stylesheet file named "test.css"
-	When I create new ThemeAsset item from this file
-	Then file must have content_type "stylesheet"
+	Given a files
+	 | file     |
+	 | test.css |
+	 | test.js  |
+	 | test.png |
+
+	When I create new ThemeAssets item from this files
+	Then files must eq with their content_types
+	 | content_type |
+	 | stylesheet   |
+	 | javascript   |
+	 | image        |

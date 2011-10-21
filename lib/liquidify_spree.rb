@@ -1,5 +1,7 @@
 require 'liquid'
+require 'RMagick'
 require 'carrierwave'
+require 'patches/carrierwave'
 #require 'carrierwave/orm/activerecord'
 require 'spree_core'
 require "liquidify_extender"
