@@ -13,7 +13,6 @@ class LiquidThemeCollector
     @liquid_theme.liquid_templates
   end
   
-  
   protected
   
   def create_missing_templates

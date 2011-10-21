@@ -1,15 +1,13 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-# Maintain your gem's version:
 require "liquidify_spree/version"
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "liquidify_spree"
   s.version     = LiquidifySpree::VERSION
   s.authors     = %q{Kirillov Alexander}
   s.email       = %q{saratovsource@gmail.com}
-  s.homepage    = "TODO"
+  s.homepage    = "http://geekbox.ru"
   s.summary     = "TODO: Summary of LiquidifySpree."
   s.description = "TODO: Description of LiquidifySpree."
 

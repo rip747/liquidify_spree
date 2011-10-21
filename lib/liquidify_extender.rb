@@ -14,7 +14,6 @@ module LiquidifyExtender
       self.class.liquidify_template(args)
     end
     
-    
     def render_liquid(args={})
       prepare_and_set_response(LiquidifySpree::LiquidThemeRenderer.new({:controller => self}.merge(args)))
     end
