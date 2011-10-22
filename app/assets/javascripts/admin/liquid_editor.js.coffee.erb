@@ -3,7 +3,7 @@
 @CodeMirrorEditors = []
 
 addCodeMirrorEditor = (type, el, parser) ->
-	parser = "#{parser || 'Liquid'}Parser"
+	parser = ($(el).data("htmlEditor") || "Liquid")+"Parser"
 	editor = CodeMirror.fromTextArea(el, {
 		basefiles:["<%= asset_path ('admin/codemirror/codemirror_base.min.js')%>"], 
 		stylesheet:[
@@ -14,11 +14,13 @@ addCodeMirrorEditor = (type, el, parser) ->
 			],
 		continuousScanning: 500,
 		reindentOnLoad: true,
-		initCallback: (editor) ->
-			console.debug(editor)
+		initCallback: (editor) =>
+			console.debug(parser)
+			editor.setParser(parser)
 		})
 	CodeMirrorEditors.push({ 'el': el, 'editor': editor });
 
 jQuery ($) ->
-	$('.liquid_area.html').each ->
-		addCodeMirrorEditor "unknown", this, "liquid"
+	$('[data-html-editor]').each ->
+		
+		addCodeMirrorEditor "unknown", this

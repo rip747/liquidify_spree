@@ -1,0 +1,4 @@
+%tr{:id => dom_id(file)}
+	%td= link_to_with_icon 'edit', file.source.url, edit_admin_liquid_theme_theme_asset_path(@liquid_theme, file) if file.source
+	%td= file.content_type
+	%td= link_to_delete file, :url=>admin_liquid_theme_theme_asset_path(@liquid_theme, file)

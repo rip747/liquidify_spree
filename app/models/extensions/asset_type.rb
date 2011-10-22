@@ -10,6 +10,11 @@ module Extensions
           self.content_type.to_s == type
         end
       end
+      
+    end
+  
+    module InstanceMethods
+      
     end
   end
 end
