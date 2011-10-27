@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110919171950) do
   end
 
   create_table "theme_assets", :force => true do |t|
+    t.integer  "liquid_theme_id"
     t.string   "local_path"
     t.string   "content_type"
     t.integer  "width"

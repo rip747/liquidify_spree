@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'rmagick', '2.12.2'
   s.add_dependency "carrierwave"
   s.add_dependency "formtastic"
+  s.add_dependency "mime-types"
+  s.add_dependency 'mimetype-fu'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency 'rspec-rails'

@@ -24,9 +24,7 @@ module LiquidifySpree
     module InstanceMethods
       def set_content_type(*args)
         value = :other
-
         content_type = file.content_type == 'application/octet-stream' ? File.mime_type?(original_filename) : file.content_type
-
         self.class.content_types.each_pair do |type, rules|
           rules.each do |rule|
             case rule

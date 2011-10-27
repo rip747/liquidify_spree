@@ -19,3 +19,13 @@ Scenario: Save stylesheet file
 	 | stylesheet   |
 	 | javascript   |
 	 | image        |
+	
+Scenario: Store planar text in file
+	Given any planar text
+	And Default theme must have no one any theme asset
+	When I create a "test" file with "stylesheet" type
+	Then I must have a file in default theme with name "test.css" and type "stylesheet"
+	And source of this file must be not empty
+	And content of this file must be as given planar text
+
+

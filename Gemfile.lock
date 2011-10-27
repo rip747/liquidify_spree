@@ -6,6 +6,8 @@ PATH
       formtastic
       haml
       liquid
+      mime-types
+      mimetype-fu
       rmagick (= 2.12.2)
       spree_core (>= 0.70.0.rc2)
 
@@ -115,6 +117,7 @@ GEM
       activesupport (~> 3.1.0)
       polyamorous (~> 0.5.0)
     mime-types (1.16)
+    mimetype-fu (0.1.2)
     multi_json (1.0.3)
     nested_set (1.6.8)
       activerecord (>= 3.0.0)

@@ -1,12 +1,21 @@
 = render "shared/error_messages", :target => @theme_asset
+= "--#{@theme_asset.performing_plain_text?}--"
 %fieldset#general_fields
 	%legend= t(:general)
 	- if @theme_asset.new_record?
-		= f.field_container :source do
-			= f.label :source
-			%br
-			= f.file_field :source
-			
+		- if params[:content_type].blank?
+			= f.field_container :source do
+				= f.label :source
+				%br
+				= f.file_field :source
+		- else
+			= f.field_container :plain_text_type do
+				= f.label :plain_text_type
+				= f.select :plain_text_type, %w(stylesheet javascript)
+			= f.field_container :plain_text_name do
+				= f.label :plain_text_name
+				%br
+				= f.text_field :plain_text_name
 	= f.field_container :content do
 		= f.label :plain_text
 		%br
