@@ -1,5 +1,6 @@
 = render "shared/error_messages", :target => @theme_asset
-= "--#{@theme_asset.performing_plain_text?}--"
+= f.hidden_field :liquid_theme_id
+= f.hidden_field :performing_plain_text
 %fieldset#general_fields
 	%legend= t(:general)
 	- if @theme_asset.new_record?

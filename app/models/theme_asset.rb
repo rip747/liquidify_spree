@@ -26,7 +26,7 @@ class ThemeAsset < ActiveRecord::Base
   end
   
   def safe_source_filename
-    self.source_filename || self.source.send(:original_filename) rescue nil
+    self.source.filename || self.source.send(:file).send(:filename) rescue nil
   end
   
   def sanitize_folder

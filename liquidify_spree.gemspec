@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency 'spree_core', '>= 0.70.0.rc2'
+  s.add_dependency 'spree_core', '>= 0.70.1'
   s.add_dependency "liquid"
   s.add_dependency "haml"
   s.add_dependency 'rmagick', '2.12.2'
