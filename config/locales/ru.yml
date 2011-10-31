@@ -1,4 +1,6 @@
 ru:
+  actions:
+    without_save: "<- Назад без сохранения"
   file_type: "Тип файла"
   liquid_settings: "Настройки Liquid"
   liquid_settings_description: "Настройки шаблонизатора Liquid"
@@ -25,3 +27,5 @@ ru:
     edit: "Редактировать файл"
     new_asset_if_empty: "Пока ни одного файла в этого типа нет. Вы можете создать новый файл этого типа <a href='%{url}'>здесь</a>."
     new_asset_if_blank: "Пока ни одного файла в этого типа нет. Вы можете загрузить новый файл <a href='%{url}'>здесь</a>."
+    theme_asset_header: "Для вставки этого файла в шаблон, необходимо ввести: <code>{{ <b>%{type}_asset_url</b> %{name} }}</code> Этот код вставит в шаблон текст: <code>%{url}</code>"
+    get_file: "<a title='Откроется в новом окне или вкладке.' href='%{url}' target='_blank'>%{url}</a> - Это сам файл"

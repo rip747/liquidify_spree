@@ -9,7 +9,7 @@ class Admin::ThemeAssetsController < Admin::ResourceController
   private
   
   def set_content_type_to_planar
-    @theme_asset.performing_plain_text = true
-    @theme_asset.plain_text_type = %w{javascript, stylesheet}.select{ | p | p = params[:content_type]}
+    @theme_asset.performing_plain_text = !params[:content_type].blank?
+    @theme_asset.plain_text_type = %w{javascript, stylesheet}.include?(params[:content_type]) ? params[:content_type] : "stylesheet"
   end
 end

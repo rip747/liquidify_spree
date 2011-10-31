@@ -4,24 +4,25 @@
 	%thead
 		%tr
 			%th{width:250}= t("name")
+			%th= t("get_file")
 			%th= t("file_type")
 			%th= t("action")
 	%tbody
 		- %w{stylesheet javascript}.each do |filetype|
 			%tr
-				%td{:colspan => 3}
+				%td{:colspan => 4}
 					%b= t "theme_asset.filetypes.#{filetype}"
 					= link_to_with_icon('edit', "+", new_admin_liquid_theme_theme_asset_path(@liquid_theme, :content_type => filetype))
 			- files = @liquid_theme.theme_assets.send("only_#{filetype}").each do |file|
 				= render :partial => "/admin/theme_assets/list_item", :locals =>{:file => file}
 			- if files.empty?
 				%tr
-					%td{:colspan => 3}= raw t("theme_asset.new_asset_if_empty", :filetype => filetype, :url => new_admin_liquid_theme_theme_asset_path(@liquid_theme, :content_type => filetype))
+					%td{:colspan => 4}= raw t("theme_asset.new_asset_if_empty", :filetype => filetype, :url => new_admin_liquid_theme_theme_asset_path(@liquid_theme, :content_type => filetype))
 		- %w{media image font pdf}.each do |filetype|
 			- files = @liquid_theme.theme_assets.send("only_#{filetype}")
 			- unless files.empty?
+				%tr
+					%td{:colspan => 4}
+						%b= t "theme_asset.filetypes.#{filetype}"
 				- files.each do |file|
-					%tr
-						%td{:colspan => 3}
-							%b= t "theme_asset.filetypes.#{filetype}"
 					= render :partial => "/admin/theme_assets/list_item", :locals =>{:file => file}

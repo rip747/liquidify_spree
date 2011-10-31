@@ -1,8 +1,10 @@
 = render "shared/error_messages", :target => @theme_asset
 = f.hidden_field :liquid_theme_id
 = f.hidden_field :performing_plain_text
+= f.hidden_field :plain_text_type
 %fieldset#general_fields
 	%legend= t(:general)
+	= render :partial => "/admin/theme_assets/asset_liquid_help", :locals => {:file => @theme_asset} unless @theme_asset.new_record?
 	- if @theme_asset.new_record?
 		- if params[:content_type].blank?
 			= f.field_container :source do
@@ -10,14 +12,12 @@
 				%br
 				= f.file_field :source
 		- else
-			= f.field_container :plain_text_type do
-				= f.label :plain_text_type
-				= f.select :plain_text_type, %w(stylesheet javascript)
 			= f.field_container :plain_text_name do
 				= f.label :plain_text_name
 				%br
 				= f.text_field :plain_text_name
-	= f.field_container :content do
-		= f.label :plain_text
-		%br
-		= f.text_area :plain_text
+	- if @theme_asset.performing_plain_text?
+		= f.field_container :content do
+			= f.label :plain_text
+			%br
+			= f.text_area :plain_text, "data-html-editor" => data_html_editor_type(@theme_asset)
