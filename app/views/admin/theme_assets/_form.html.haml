@@ -16,6 +16,10 @@
 				= f.label :plain_text_name
 				%br
 				= f.text_field :plain_text_name
+		= f.field_container :folder do
+			= f.label :folder
+			%br
+			= f.text_field :folder
 	- if @theme_asset.performing_plain_text?
 		= f.field_container :content do
 			= f.label :plain_text

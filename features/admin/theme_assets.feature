@@ -27,5 +27,3 @@ Scenario: Store planar text in file
 	Then I must have a file in default theme with name "test.css" and type "stylesheet"
 	And source of this file must be not empty
 	And content of this file must be as given planar text
-
-
