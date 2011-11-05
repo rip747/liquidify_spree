@@ -3,7 +3,7 @@ Given /^stylesheet asset named "([^"]*)"$/ do |filename|
 end
 
 When /^I render liquid template with "([^"]*)"$/ do |template_string|
-  @result = ::Liquid::Template.parse(template_string).render()
+  @result = LiquidifySpree::LiquidThemeRenderer.new().process_text_template(template_string)
 end
 
 Then /^must get a "([^"]*)"$/ do |styleheet_path|

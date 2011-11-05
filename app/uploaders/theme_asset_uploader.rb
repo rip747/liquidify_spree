@@ -19,4 +19,16 @@ class ThemeAssetUploader < CarrierWave::Uploader::Base
       File.join([default_dir] + args.map(&:to_s))
     end
   end
+  
+  def self.url_for(theme, path)
+    build(theme, path)
+  end
+  
+  def self.build(theme, path)
+    asset = ThemeAsset.new(:liquid_theme => theme, :folder => File.dirname(path))
+    uploader = ThemeAssetUploader.new(asset)
+    uploader.retrieve_from_store!(File.basename(path))
+    uploader
+  end
+  
 end

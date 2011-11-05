@@ -1,12 +1,18 @@
 module LiquidifySpree
   class LiquidThemeRenderer
     attr_accessor :controller, :action, :theme, :content, :header, :result
-    attr_accessor :args
+    attr_accessor :args, :registers
     def initialize(args = {})
-      @controller = args.delete(:controller)
-      @action = args.delete(:action) || @controller.params[:action]
+      @args = {}
+      unless args.blank?
+        @controller = args.delete(:controller)
+        @action = args.delete(:action) || @controller.params[:action]
+        @args = default_params_to_liquid.merge(args)
+      end
       @theme = retrive_active_theme(args.delete(:theme))
-      @args = default_params_to_liquid.merge(args)
+      @registers = {
+        :theme => @theme
+      }
       
       render
     end
@@ -18,13 +24,22 @@ module LiquidifySpree
     
     def process(liquid_template, assigns = {})
       return "" if liquid_template.nil?
-      liquid_template.render(@args.merge(assigns).stringify_keys)
+      liquid_template.render(context(@args.merge(assigns).stringify_keys))
+    end
+    
+    def process_text_template(template, assigns = {})
+     liquid_template = ::Liquid::Template.parse(template)
+     process(liquid_template, assigns)
     end
     
     protected
     
-    def retrive_active_theme(name)
-      LiquidTheme.find_by_name(name || LiquidifySpree::Config[:theme])
+    def context(assigns)
+      ::Liquid::Context.new({}, assigns, @registers)
+    end
+    
+    def retrive_active_theme(name = nil)
+      LiquidTheme.find_by_name(name || LiquidifySpree::Config[:theme] || "Default")
     end
     
     def default_params_to_liquid

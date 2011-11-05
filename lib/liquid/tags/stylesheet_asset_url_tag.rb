@@ -18,7 +18,8 @@ module LiquidifySpree
         
         def render(context)
           return if (@theme.blank? || @file_name.blank?)
-          retrive_file_path
+          #retrive_file_path
+          ThemeAssetUploader.url_for(@theme, @file_name).to_s
         end
         
         def retrive_file_path

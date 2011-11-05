@@ -9,7 +9,5 @@ Scenario: Get stylesheet path in liquid markup
 	When I render liquid template with "{% theme_asset_url stylesheets/test.css %}"
 	Then must get a "/themes/1/stylesheets/test.css"
 	
-	When I render liquid template with "{{ stylesheets/test.css | stylesheet }}"
+	When I render liquid template with "{{ 'test.css' | stylesheet_url }}"
 	Then must get a "/themes/1/stylesheets/test.css"
-
-"
