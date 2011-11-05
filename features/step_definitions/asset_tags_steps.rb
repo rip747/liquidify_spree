@@ -1,4 +1,4 @@
-Given /^stylesheet asset named "([^"]*)"$/ do |filename|
+Given /^asset named "([^"]*)"$/ do |filename|
   @file = Factory(:theme_asset, {:source => File.open(File.join(File.dirname(__FILE__), '../../test/fixtures', filename)), :liquid_theme => @theme})
 end
 

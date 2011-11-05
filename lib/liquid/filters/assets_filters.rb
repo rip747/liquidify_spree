@@ -4,17 +4,18 @@ module LiquidifySpree
       module AssetsFilters
         # Write the url to a stylesheet resource
         # input: name of the css file
-        def stylesheet_url_old(input)
-          return '' if input.nil?
-          unless input =~ /^(\/|https?:)/
-            input = asset_url("stylesheets/#{input}")
-          end
-          input = "#{input}.css" unless input.to_s =~ /.css$/
-          input
+        def stylesheet_url(input)
+          asset_url_with_types(input, :css, "stylesheets")
         end
         
-        def stylesheet_url(input)
-          asset_url_with_types(input, :css)
+        def javascript_url(input)
+          asset_url_with_types(input, :js, "javascripts")
+        end
+        
+        def theme_image_url(input)
+          return '' if input.nil?
+          input = "images/#{input}"
+          asset_url(input)
         end
         
         def asset_url(path)
@@ -23,10 +24,10 @@ module LiquidifySpree
         
         private
         
-        def asset_url_with_types(input, type)
+        def asset_url_with_types(input, type, path)
           return '' if input.nil?
           unless input =~ /^(\/|https?:)/
-            input = asset_url("stylesheets/#{input}")
+            input = asset_url("#{path}/#{input}")
           end
           input = "#{input}.#{type}" unless input.to_s =~ /.#{type}$/
           input
