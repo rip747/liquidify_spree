@@ -26,7 +26,6 @@ class LiquidifyTemplatesCollection
     begin
       return @templates_hash[controller.class][action.to_sym]
     rescue Exception => e
-      p e
       return ""
     end
   end

@@ -8,6 +8,6 @@ HomeController.class_eval do
 #  def index
 #    @searcher = Spree::Config.searcher_class.new(params)
 #    @products = @searcher.retrieve_products
-#    render_liquid(self, {'products'=>@products})
+#    render_liquid({'products'=>@products})
 #  end
 end
