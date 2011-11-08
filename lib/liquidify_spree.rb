@@ -1,6 +1,7 @@
 require 'liquid'
 require 'RMagick'
 require 'carrierwave'
+require 'patches/refactoring'
 require 'patches/carrierwave'
 #require 'carrierwave/orm/activerecord'
 require 'spree_core'
@@ -11,6 +12,8 @@ require "render/content_renderer"
 require "render/layout_renderer"
 require "render/liquid_theme_renderer.rb"
 require "carierwave_ext"
+
+require "collections"
 
 require "liquidify_spree/engine"
 

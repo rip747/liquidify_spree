@@ -18,6 +18,7 @@ module LiquidifySpree
     end
     
     def render
+      #p "#{@controller} - #{@action}"
       ContentRenderer.new(self).render
       LayoutRenderer.new(self).render
     end
@@ -52,6 +53,8 @@ module LiquidifySpree
       
       #retrive cart
       ret[:cart] ||= @controller.current_order(true)
+      
+      ret[:links] = LiquidifySpree::Collections::AbstractLinkCollection.new.collections
       
       ret.stringify_keys
     end
